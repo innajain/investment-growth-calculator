@@ -182,7 +182,7 @@ def main():
                 "Inflation Rate (% per year)", 
                 min_value=0.0, 
                 max_value=15.0, 
-                value=7.0, 
+                value=6.5, 
                 step=0.5,
                 help="Expected annual inflation rate"
             )
