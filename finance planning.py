@@ -1,16 +1,17 @@
-def run_withdrawal_simulation(amt, annual_withdrawal, decadal_withdrawal, withdrawal_tax, annual_return, inflation, years, fees, new_generation_time, kids):
+def run_withdrawal_simulation(amt, annual_withdrawal, decadal_withdrawal, withdrawal_tax, annual_return, inflation, years, fees, new_generation_time, kids, withdrawal_start_yr):
     for i in range(years):
         amt = amt * (1 + annual_return / 100)
         amt *= 1 - fees / 100
         amt /= 1 + inflation / 100
-        amt -= annual_withdrawal * (1 + withdrawal_tax / 100)
-        if (i + 1) % 10 == 0:
-            amt -= decadal_withdrawal * (1 + withdrawal_tax / 100)
+        if (i+1) >= withdrawal_start_yr:
+            amt -= annual_withdrawal * (1 + withdrawal_tax / 100)
+            if (i + 1) % 10 == 0:
+                amt -= decadal_withdrawal * (1 + withdrawal_tax / 100)
         if (i + 1) % new_generation_time == 0:
             amt /= kids
     return amt
 
-def find_req_amt(annual_withdrawal, decadal_withdrawal, withdrawal_tax, annual_return, inflation, fees, new_generation_time, kids):
+def find_req_amt(annual_withdrawal, decadal_withdrawal, withdrawal_tax, annual_return, inflation, fees, new_generation_time, kids, withdrawal_start_yr):
     # Binary Search Approach
     low, high = 0, 1e10  # Start with a reasonable range
     tolerance = 1e-6
@@ -30,6 +31,7 @@ def find_req_amt(annual_withdrawal, decadal_withdrawal, withdrawal_tax, annual_r
             fees=fees,
             new_generation_time=new_generation_time,
             kids=kids,
+            withdrawal_start_yr=withdrawal_start_yr
         )
 
         if output > amt * 1.00001:
@@ -50,7 +52,7 @@ amt = find_req_amt(annual_withdrawal=.3,
                    fees=0.7,
                    new_generation_time=25,
                    kids=2,
+                   withdrawal_start_yr=0
                    )
 
-import math
-print(f"Required Amount: ₹{math.ceil(amt)} crores")
+print(f"Required Amount: ₹{amt:.2f} crores")
