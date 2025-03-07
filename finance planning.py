@@ -53,19 +53,32 @@ def find_req_amt(annual_withdrawal, decadal_withdrawal, withdrawal_tax, annual_r
             break
     return amt
 
+annual_withdrawal=0.3
+decadal_withdrawal=6
+withdrawal_tax=15
+annual_return=15
+inflation=7
+fees=1
+new_generation_time=27
+kids=2
+withdrawal_start_yr=0
+india_maturity_yr=50
+mature_returns=10
+mature_inflation=5
 
-amt = find_req_amt(annual_withdrawal=.3,
-                   decadal_withdrawal=6,
-                   withdrawal_tax=15,
-                   annual_return=15,
-                   inflation=7,
-                   fees=1,
-                   new_generation_time=27,
-                   kids=2,
-                   withdrawal_start_yr=0,
-                   india_maturity_yr=50,
-                   mature_returns=10,
-                   mature_inflation=5
+amt = find_req_amt(annual_withdrawal=annual_withdrawal,
+                   decadal_withdrawal=decadal_withdrawal,
+                   withdrawal_tax=withdrawal_tax,
+                   annual_return=annual_return,
+                   inflation=inflation,
+                   fees=fees,
+                   new_generation_time=new_generation_time,
+                   kids=kids,
+                   withdrawal_start_yr=withdrawal_start_yr,
+                   india_maturity_yr=india_maturity_yr,
+                   mature_returns=mature_returns,
+                   mature_inflation=mature_inflation
                    )
 
 print(f"Required Amount: ₹{amt:.2f} crores")
+print(f"Withdrawal ratio: {(annual_withdrawal+decadal_withdrawal/10)/amt:.2%}")
