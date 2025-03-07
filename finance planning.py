@@ -3,6 +3,7 @@ def run_withdrawal_simulation(amt, annual_withdrawal, decadal_withdrawal, withdr
         amt = amt * (1 + annual_return / 100)
         amt *= 1 - fees / 100
         amt /= 1 + inflation / 100
+        if (i+1) == 50: annual_return = 12
         if (i+1) >= withdrawal_start_yr:
             amt -= annual_withdrawal * (1 + withdrawal_tax / 100)
             if (i + 1) % 10 == 0:
@@ -47,10 +48,10 @@ def find_req_amt(annual_withdrawal, decadal_withdrawal, withdrawal_tax, annual_r
 amt = find_req_amt(annual_withdrawal=.3,
                    decadal_withdrawal=6,
                    withdrawal_tax=15,
-                   annual_return=15,
-                   inflation=6.5,
-                   fees=0.7,
-                   new_generation_time=25,
+                   annual_return=14,
+                   inflation=7,
+                   fees=1,
+                   new_generation_time=27,
                    kids=2,
                    withdrawal_start_yr=0
                    )
