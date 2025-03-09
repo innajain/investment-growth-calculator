@@ -164,7 +164,7 @@ def main():
                 "Initial Portfolio Value (Crores)", 
                 min_value=0.0, 
                 max_value=1000.0, 
-                value=194.0, 
+                value=36.0, 
                 step=1.0,
                 help="Your current portfolio value in crores (1 crore = 10 million)"
             )
@@ -173,7 +173,7 @@ def main():
                 "Investment Returns (% per year)", 
                 min_value=0.0, 
                 max_value=20.0, 
-                value=12.0, 
+                value=14.0, 
                 step=0.5,
                 help="Expected nominal return on investments before inflation"
             )
@@ -182,7 +182,7 @@ def main():
                 "Inflation Rate (% per year)", 
                 min_value=0.0, 
                 max_value=15.0, 
-                value=6.5, 
+                value=7.0, 
                 step=0.5,
                 help="Expected annual inflation rate"
             )
@@ -191,7 +191,7 @@ def main():
                 "Initial Annual Withdrawal (lakhs/year)", 
                 min_value=0, 
                 max_value=200, 
-                value=200, 
+                value=30, 
                 step=1,
                 help="How much you plan to withdraw annually in lakhs (1 lakh = 100,000)"
             )
@@ -216,10 +216,10 @@ def main():
             
             big_withdrawal_amt = st.slider(
                 "Big Withdrawal Amount (Crores)", 
-                min_value=0.0, 
-                max_value=100.0, 
-                value=25.0, 
-                step=1.0,
+                min_value=0, 
+                max_value=100, 
+                value=6, 
+                step=1,
                 help="Amount of each large periodic withdrawal in crores"
             )
             
